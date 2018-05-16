@@ -37,11 +37,11 @@ We will walk the user to the the following conceptual steps
 
 ## Flow
 
-* Log into IBM's DSX service.
+* Log into IBM's Watson Studio service.
 
-* Upload the data as a data asset into DSX.
+* Upload the data as a data asset into Watson Studio.
 
-* Start a notebook in DSX and input the data asset previously created.
+* Start a notebook in Watson Studio and input the data asset previously created.
 
 * Follow following discussion and steps.
 
@@ -59,17 +59,17 @@ We will walk the user to the the following conceptual steps
 
 7. Model Training.
 
-  7.1 What and Why of XGBoost.
+  7.1. What and Why of XGBoost.
 
-  7.2 Discuss Metrics for Model Performance.
+  7.2. Discuss Metrics for Model Performance.
 
-  7.3 First Attempt at Model Training and it's performance,evaluation and analysis.
+  7.3. First Attempt at Model Training and it's performance,evaluation and analysis.
 
-  7.4 Strategy For Better Classifier for the Imbalance Data
+  7.4. Strategy For Better Classifier for the Imbalance Data
 
-  7.5 Second Attempt at Model Training using Weighted Samples and it's performance, evaluation and analysis.
+  7.5. Second Attempt at Model Training using Weighted Samples and it's performance, evaluation and analysis.
 
-  7.6 Third Attempt at Model Training using Weighted Samples and Feature Selection and it's performance analysis.
+  7.6. Third Attempt at Model Training using Weighted Samples and Feature Selection and it's performance analysis.
 
 8. Inference Discussion (Generalization cwand Prediction)
 
@@ -82,7 +82,7 @@ We will walk the user to the the following conceptual steps
 
 ## Included components
 
-* [IBM Data Science Experience](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Watson Studio](https://dataplatform.ibm.com): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 * [Jupyter Notebook](http://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
 
 ## Featured technologies
@@ -100,65 +100,75 @@ We will walk the user to the the following conceptual steps
 
 This Code Pattern consists of following activities:
 
-* [Run a Jupyter notebook in the IBM Data Science Experience.](#run-a-jupyter-notebook-in-the-ibm-data-science-experience)
-* [Run end to end ML pipeline  Analyze and Predict the data](#analyze-and-predict-the-data).
+* [Run a Jupyter notebook in the IBM Watson Studio](#run-a-jupyter-notebook-in-the-ibm-watson-studio).
+* [Run end to end ML pipeline  Analyze and Predict the data](#explore-analyze-and-predict-cd-subscription-for-bank-client).
 
-## Run a Jupyter notebook in the IBM Data Science Experience
+## Run a Jupyter notebook in the IBM Watson Studio
 
-1. [Sign up for the Data Science Experience](#1-sign-up-for-the-data-science-experience)
-2. [Create the notebook](https://github.com/IBM/ds_xgboost_clf_4_imbalance_data#2-create-the-notebook)
-3. [Run the notebook](#3-run-the-notebook)
-4. [Save and Share](#4-save-and-share)
+1. [Sign up for the Watson Studio](#1-sign-up-for-the-watson-studio)
+2. [Create a new Watson Studio project](#2-create-a-new-watson-studio-project)
+3. [Create the notebook](#3-create-the-notebook)
+4. [Upload data](#4-upload-data)
+5. [Run the notebook](#5-run-the-notebook)
+6. [Save and Share](#6-save-and-share)
 
-### 1. Sign up for the Data Science Experience
+### 1. Sign up for the Watson Studio
 
-Sign up for IBM's [Data Science Experience](https://datascience.ibm.com/). By signing up for the Data Science Experience, two services: ``DSX-Spark`` and ``DSX-ObjectStore`` will be created in your IBM Cloud account. If these services do not exist, or if you are already using them for some other application, you will need to create new instances.
+Log in or sign up for IBM's [Watson Studio](https://dataplatform.ibm.com).
 
-To create these services:
-* Login to your [IBM Cloud](http://bluemix.net) account.
-* Create your Spark service by selecting the service type [Apache Spark](https://console.bluemix.net/catalog/services/apache-spark). If not already used, name your service ``DSX-Spark``. 
-* Create your Object Storage service by selecting the service type [Cloud Object Storage](https://console.bluemix.net/catalog/infrastructure/object-storage-group). If not already used, name your service ``DSX-ObjectStorage``.
-
-> Note: When creating your Object Storage service, select the ``Swift`` storage type in order to avoid having to pay an upgrade fee.
-
-Take note of your service names as you will need to select them in the following steps.
-
-![](doc/source/images/Screen%20Shot%202017-12-06%20at%202.22.06%20PM.png)
-
-### 2. Create the notebook
-
-> Note: if you would prefer to skip these steps and just follow along by viewing the completed Notebook, simply:
+> Note: if you would prefer to skip the remaining Watson Studio set-up steps and just follow along by viewing the completed Notebook, simply:
 > * View the completed [notebook](https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebooks/predict_bank_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb) and its outputs, as is.
 > * While viewing the notebook, you can optionally download it to store for future use.
-> * When complete, continue this code pattern by jumping ahead to the [Analyze and Predict the Data](#analyze-and-predict-the-data) section.
+> * When complete, continue this code pattern by jumping ahead to the [Analyze and Predict the data](#analyze-and-predict-the-data) section.
 
-If you want to create the project on your own, first you must create a new Project:
-* From the [IBM Data Science Experience page](https://apsportal.ibm.com/analytics) either click the ``Get Started`` tab at the top or scroll down to ``Recently updated projects``.
-* Click on ``New project`` under ``Recently updated projects``.
-* Enter a ``Name`` and optional ``Description``. 
-* For ``Spark Service``, select your Apache Spark service name.
-* For ``Storage Type``, select the ``Object Storage (Swift API)`` option.
-* For ``Target Object Storage Instance``, select your Object Storage service name.
-* Click ``Create``.
+### 2. Create a new Watson Studio project
 
-Create the Notebook:
-* Click on your project to open up the project details panel.
-* Click ``add notebooks``.
-* Click the tab for ``From URL`` and enter a ``Name`` and optional ``Description``.
-* For ``Notebook URL`` enter: https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebooks/predict_bank_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb
-* For ``Spark Service``, select your Apache Spark service name.
-* Click ``Create Notebook``.
+* Select the `New Project` option from the Watson Studio landing page and choose the `Data Science` option.
 
-Upload the data as data assets:
-* This project has 1 datasets. Upload these as data assets in your project. Do this by loading each dataset into the pop up section on the right hand side.
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/project_choices.png)
+
+* To create a project in Watson Studio, give the project a name and either create a new `Cloud Object Storage` service or select an existing one from your IBM Cloud account.
+
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/new_project.png)
+
+* Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (datasets and notebooks) and any IBM cloud services.
+
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/project_dashboard.png)
+
+### 3. Create the Notebook
+
+* From the project dashboard view, click the `Assets` tab, click the `+ New notebook` button.
+
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/new_notebook.png)
+
+* Give your notebook a name and select your desired runtime, in this case we'll be using the associated Spark runtime.
+
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/notebook_spark.png)
+
+* Now select the `From URL` tab to specify the URL to the notebook in this repository.
+
+![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/notebook_with_url_spark.png)
+
+* Enter this URL:
+
+```
+https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebooks/predict_bank_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb
+```
+
+* Click the `Create` button.
+
+
+### 4. Upload data
+
+* Return to the project dashboard view and select the `Assets` tab.
+* This project has 3 datasets. Upload all three as data assets in your project. Do this by loading each dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.   
 * Once complete, go into your notebook in the edit mode (click on the pencil icon next to your notebook on the dashboard). 
 * Click on the ``1001`` data icon in the top right. The data files should show up. 
 * Click on each and select ``Insert Pandas Data Frame``. Once you do that, a whole bunch of code will show up in your first cell. 
-* Make sure your ``bank_loan.csv`` is saved as ``data_raw_all`` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with ``bank_loan.csv`` as ``df_data_2``. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
+* Make sure your ``bank.csv`` is saved as ``data_raw_all` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with ``bank.csv`` as ``df_data_2` and so on. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
 
- ![](doc/source/images/Screen%20Shot%202017-12-06%20at%202.29.41%20PM.png)
 
-### 3. Run the notebook
+### 5. Run the notebook
 
 When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -183,8 +193,8 @@ There are several ways to execute the code cells in your notebook:
   * Press the `Schedule` button located in the top right section of your notebook
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
-    
-### 4. Save and Share
+
+### 6. Save and Share
 
 #### How to save your work:
 
@@ -210,15 +220,15 @@ options to specify exactly what you want shared from your notebook:
 * `All content, including code`: displays the notebook as is.
 * A variety of `download as` options are also available in the menu.
 
-## Explore, Analyse and Predict Bank Client's CD subscription
+## Explore, Analyze and Predict CD Subscription for Bank
  
 1. Introduction and Background.
 
-  Imbalance dataset where number of positive samples are lot more than negative samples are very common and we setup the premise of our whole code pattern here.
+  Imbalance dataset are very common. It those datasets, number of positive samples are lot less than negative samples. This causes many tricky issues developing the high performing ML model and we explained in detail premise of our whole code pattern here.
 
 2. Data Set Description.
 
- Data set is from Purtugese Bank Marketing data, where bank's associate makes call to user to sell financial product i.e CD to bank's client. Data set contains 17 columns and is explained here.
+ Data set is related to  direct marketing campaigns of a [Portuguese banking institution](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing), where bank's associate makes call to bank's client to sell financial product i.e CD. Data set contains 17 columns and is explained here.
 
 3. Statement of Classification Problem.
 
@@ -270,18 +280,26 @@ options to specify exactly what you want shared from your notebook:
 
 8. Inference Discussion (Generalization and Prediction)
 
- Now, our model is ready to used and we run it on held out data, to see it's performance on test data.
+ Now, our model is ready to be used and we run it on held out data, to see it's performance on test data.
 
 9. Summary about what we learned about various techniques.
 
 10. Pointers to Other Advanced Techniques like OverSampling, UnderSampling and SMOTE algorithms.
 
 
+## Sample Output
+
+After running, weighted and feature selected classifier, we find the final result based on the classification report and various stats.
+Those are summarized in the following two screen-shots.
+
+![](doc/source/images/xgboost_out1.png)
+![](doc/source/images/xgboost_out2.png)
+
 Awesome job following along! Now go try and take this further or apply it to a different use case!
 
 ## Links
 
- - DSX:https://datascience.ibm.com/docs/content/analyze-data/creating-notebooks.html
+ - Watson Studio: https://datascience.ibm.com/docs/content/analyze-data/creating-notebooks.html.
  - Pandas:http://pandas.pydata.org/
  - Data:http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
  - Scikit Learn:http://scikit-learn.org/stable/
