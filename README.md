@@ -1,84 +1,37 @@
 
 ## Predicting Bank Client's Financial Product subscription using Scikit Learn and XGBoost for imbalance dataset
 
-This Code Pattern will focus on and guide you through how to use `xgboost`, `scikit learn` and `python` (in the Data Science Experience, or DSX) to predict Bank Client's subscription to financial product based off a [UCI reposository for Bank Marketing Data Set](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing).
+This Code Pattern will guide you through how to use `XGBoost`, `Scikit Learn` and `Python` in IBM Watson Studio to predict Bank Client's subscription to financial product based off a [UCI repository for Bank Marketing Data Set](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing).
 
+Class imbalance is a common problem in data science, where the number of positive samples are significantly less than the number of negative samples. As data scientists, one would like to solve this problem and create a classifier with good performance. XGBoost (Extreme Gradient Boosting Decision Tree) is very common tool for creating the Machine Learning Models for classification and regression. However, there are various tricks and techniques for creating good classification models using XGBoost for imbalanced data-sets that is non-trivial and the reason for developing this Code Pattern.
 
-Class imbalance is a common problem in data science, where number of positive samples are significantly less than number of negative samples. As data scientists, one would like to solve this problem to create classifier with good performance. XGBoost (Extreme Gradient Boosting Decision Tree) is very common tool for creating the Machine Learning Models for classification and regression. However, there are various tricks and techniques for creating good classification model using xgboost for imbalance data-set that it is non trivial and hence we have created this code pattern.
+In this Code Pattern, we will illustrate how the Machine Learning classification is performed using XGBoost, which is usually a better choice compared to logistic regression and other techniques. We will use a real life data set which is highly imbalanced (i.e the number of positive sample is much less than the number of negative samples).
 
-In this code pattern, 
-We will illustrates the Machine Learning classification using the Extreme Gradient Boosted Tree. Gradient Boosted Tree, is usually a better choice compare to the logistic regression and other techniques. We will use the real life data set which is highly imbalance i.e the number of positive sample is much less than the number of negative samples.
-
-We will walk the user to the the following conceptual steps
-
+This Code Pattern will walk the user through the following conceptual steps:
 
 * Data Set Description.
-
 * Exploratory Analysis to understand the data.
-
 * Use various preprocessing to clean and prepare the data.
-
 * Use naive XGBoost to run the classification.
-
     * Use cross validation to get the model.
-
     * Plot, precision recall curve and ROC curve.
-
 * We will then tune it and use weighted positive samples to improve classification performance.
-
 * We will also talk about the following advanced techniques.
-
     * Oversampling of majority class and Undersampling of minority class.
-
     * SMOTE algorithms.
-
 
 ![](doc/source/images/architecture.png)
 
 ## Flow
 
-* Log into IBM's Watson Studio service.
-
-* Upload the data as a data asset into Watson Studio.
-
-* Start a notebook in Watson Studio and input the data asset previously created.
-
-* Follow following discussion and steps.
-
-1. Introduction and Background.
-
-2. Data Set Description.
-
-3. Statement of Classification Problem.
-
-4. Software and Tools(Xgboost and Scikit Learn).
-
-5. Visual Data Exploration to understand data (Using seaborn and matplotlib).
-
-6. Create Scikit learn ML Pipelines for Data Processing.
-
-7. Model Training.
-
-  7.1. What and Why of XGBoost.
-
-  7.2. Discuss Metrics for Model Performance.
-
-  7.3. First Attempt at Model Training and it's performance,evaluation and analysis.
-
-  7.4. Strategy For Better Classifier for the Imbalance Data
-
-  7.5. Second Attempt at Model Training using Weighted Samples and it's performance, evaluation and analysis.
-
-  7.6. Third Attempt at Model Training using Weighted Samples and Feature Selection and it's performance analysis.
-
-8. Inference Discussion (Generalization cwand Prediction)
-
-9. Summary about what we learned about various techniques.
-
-10. Pointers to Other Advanced Techniques like OverSampling, UnderSampling and SMOTE algorithms.
-
-11. References for further reading.
-
+1. Log into IBM Watson Studio service.
+2. Upload the data as a data asset into Watson Studio.
+3. Start a notebook in Watson Studio and input the data asset previously created.
+4.
+5.
+6.
+7.
+8. Evaulate their predictive performance.
 
 ## Included components
 
@@ -95,13 +48,12 @@ We will walk the user to the the following conceptual steps
 * [Matplotlib](https://matplotlib.org/): A Python library integrating matplot for visualization.
 * [SeaBorn](https://seaborn.pydata.org/): Another higher level Python library for visualization.
 
-
 # Steps
 
 This Code Pattern consists of following activities:
 
 * [Run a Jupyter notebook in the IBM Watson Studio](#run-a-jupyter-notebook-in-the-ibm-watson-studio).
-* [Run end to end ML pipeline  Analyze and Predict the data](#explore-analyze-and-predict-cd-subscription-for-bank-client).
+* [Explore, Analyze and Predict CD Subscription for Bank](#explore-analyze-and-predict-cd-subscription-for-bank-client).
 
 ## Run a Jupyter notebook in the IBM Watson Studio
 
@@ -157,7 +109,6 @@ https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebo
 
 * Click the `Create` button.
 
-
 ### 4. Upload data
 
 * Return to the project dashboard view and select the `Assets` tab.
@@ -166,7 +117,6 @@ https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebo
 * Click on the ``1001`` data icon in the top right. The data files should show up. 
 * Click on each and select ``Insert Pandas Data Frame``. Once you do that, a whole bunch of code will show up in your first cell. 
 * Make sure your ``bank.csv`` is saved as ``data_raw_all` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with ``bank.csv`` as ``df_data_2` and so on. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
-
 
 ### 5. Run the notebook
 
@@ -222,75 +172,36 @@ options to specify exactly what you want shared from your notebook:
 
 ## Explore, Analyze and Predict CD Subscription for Bank
  
-1. Introduction and Background.
+### 1. Explore the dataset
 
-  Imbalance dataset are very common. It those datasets, number of positive samples are lot less than negative samples. This causes many tricky issues developing the high performing ML model and we explained in detail premise of our whole code pattern here.
+The imbalanced dataset is from Purtugese Bank Marketing data, where bank's associate makes call to user to sell financial product i.e CD to bank's client.
 
-2. Data Set Description.
+### 2. Prepare the data
 
- Data set is related to  direct marketing campaigns of a [Portuguese banking institution](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing), where bank's associate makes call to bank's client to sell financial product i.e CD. Data set contains 17 columns and is explained here.
+For this section we will mostly use Python based libraries such as XGBoost, Scikit-learn, Matplotlib, SeaBorn, and Pandas.
 
-3. Statement of Classification Problem.
+### 3. Visual Data Exploration to understand the data using Seaborn and Matplotlib)
 
- Before we start building our model, we should clearly defines, our object and high level problem statement.
+Data scientists typically perform data exploration to gain better insight into data. Here we will explore inputs for distribution, correlation and outliers, and outputs to note any class imbalance issues.
 
-4. Software and Tools(Xgboost and Scikit Learn).
-
- We will mostly use python based libraries i.e XGBoost, Scikit-learn, Matplotlib, SeaBorn, Pandas. In this section we will load and explain, each of the packages and it's sub packages.
-
-5. Visual Data Exploration to understand data (Using seaborn and matplotlib).
-
- To get better insight into data, data scientists, usually perform data exploration, we will explore inputs for it's distribution, correlation and outliers
-
- We will also explore output and will note the class imbalance issues.
-
-6. Create Scikit learn ML Pipelines for Data Processing.
+### 4. Create Scikit learn ML Pipelines for Data Processing
   
- - Split data into train and test set.
- - Create ML pipeline for data preparation.
- In typical machine learning application, one would usually creates, ML pipeline, so that all the steps that are done on training data set, can be easily applied on the test set.
+- Split the data into train and test sets.
+- Create an ML pipeline for data preparation.
 
-7. Model Training.
+In typical machine learning applications, an ML pipeline is created so that all the steps that are done on a training data set can be easily applied to the test set.
 
-  Model Training is a iterative process and we will do several iteration to improve our model performance.
+### 5. Model Training and evaluation
 
-  7.1 What and Why of XGBoost.
+Model Training is a iterative process and we will do several iterations to improve our model performance.
 
-   We will explain, why we choose XGBoost as our tool of choice.
+Using XGBoost as our tool of choice, we will highlight classification performance metrics such as ROC curve, Precision-Recall curve, and Confusion Matrix.
 
-  7.2 Discuss Metrics for Model Performance.
-
-   We explain in detail various classification performance metrics like ROC curve, Precision-Recall curve, Confusion Matrix and our choice for this application.
-
-  7.3 First Attempt at Model Training and it's performance,evaluation and analysis.
-
-   We will build XGBoost model using cross validation and compare it's performance via various stats and visualization. We will note that, performance is not good for the positive class i.e recall is bad.
-
-  7.4 Strategy For Better Classifier for the Imbalance Data
-
-  To improve, recall, we will highlight a few tricks.
-
-  7.5 Second Attempt at Model Training using Weighted Samples and it's performance, evaluation and analysis.
-
-  Next, we will use one of the tricks of weighted samples to improve performance.
-
-  7.6 Third Attempt at Model Training using Weighted Samples and Feature Selection and it's performance analysis.
-
-  Lastly, we will build model with weighted samples and feature selection.
-
-8. Inference Discussion (Generalization and Prediction)
-
- Now, our model is ready to be used and we run it on held out data, to see it's performance on test data.
-
-9. Summary about what we learned about various techniques.
-
-10. Pointers to Other Advanced Techniques like OverSampling, UnderSampling and SMOTE algorithms.
-
+We then offer multiple strategies to improve our classifier performance.
 
 ## Sample Output
 
-After running, weighted and feature selected classifier, we find the final result based on the classification report and various stats.
-Those are summarized in the following two screen-shots.
+After running, weighted and feature selected classifier, we find the final result based on the classification report and various stats. This is summarized in the following two screen-shots:
 
 ![](doc/source/images/xgboost_out1.png)
 ![](doc/source/images/xgboost_out2.png)
@@ -299,14 +210,13 @@ Awesome job following along! Now go try and take this further or apply it to a d
 
 ## Links
 
- - Watson Studio: https://datascience.ibm.com/docs/content/analyze-data/creating-notebooks.html.
- - Pandas:http://pandas.pydata.org/
- - Data:http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
- - Scikit Learn:http://scikit-learn.org/stable/
- - XGBoost:https://github.com/dmlc/xgboost
- - Matplotlib:https://matplotlib.org/
- - SeaBorn:https://seaborn.pydata.org
-
+- Watson Studio: https://datascience.ibm.com/docs/content/analyze-data/creating-notebooks.html.
+- Pandas:http://pandas.pydata.org/
+- Data:http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+- Scikit Learn:http://scikit-learn.org/stable/
+- XGBoost:https://github.com/dmlc/xgboost
+- Matplotlib:https://matplotlib.org/
+- SeaBorn:https://seaborn.pydata.org
 
 # Learn more
 
@@ -316,4 +226,5 @@ Awesome job following along! Now go try and take this further or apply it to a d
 * **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://console.bluemix.net/catalog/services/apache-spark)
 
 # License
+
 [Apache 2.0](LICENSE)
