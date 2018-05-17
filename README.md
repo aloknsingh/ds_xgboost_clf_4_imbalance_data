@@ -180,7 +180,7 @@ The imbalanced dataset is from Purtugese Bank Marketing data, where bank's assoc
 
 For this section we will mostly use Python based libraries such as XGBoost, Scikit-learn, Matplotlib, SeaBorn, and Pandas.
 
-### 3. Visual Data Exploration to understand the data using Seaborn and Matplotlib)
+### 3. Visual Data Exploration to understand the data using Seaborn and Matplotlib
 
 Data scientists typically perform data exploration to gain better insight into data. Here we will explore inputs for distribution, correlation and outliers, and outputs to note any class imbalance issues.
 
@@ -211,12 +211,12 @@ Awesome job following along! Now go try and take this further or apply it to a d
 ## Links
 
 - Watson Studio: https://datascience.ibm.com/docs/content/analyze-data/creating-notebooks.html.
-- Pandas:http://pandas.pydata.org/
-- Data:http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
-- Scikit Learn:http://scikit-learn.org/stable/
-- XGBoost:https://github.com/dmlc/xgboost
-- Matplotlib:https://matplotlib.org/
-- SeaBorn:https://seaborn.pydata.org
+- Pandas: http://pandas.pydata.org/
+- Data: http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+- Scikit Learn: http://scikit-learn.org/stable/
+- XGBoost: https://github.com/dmlc/xgboost
+- Matplotlib: https://matplotlib.org/
+- SeaBorn: https://seaborn.pydata.org
 
 # Learn more
 
