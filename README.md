@@ -53,7 +53,7 @@ This Code Pattern will walk the user through the following conceptual steps:
 This Code Pattern consists of following activities:
 
 * [Run a Jupyter notebook in the IBM Watson Studio](#run-a-jupyter-notebook-in-the-ibm-watson-studio).
-* [Explore, Analyze and Predict CD Subscription for Bank](#explore-analyze-and-predict-cd-subscription-for-bank-client).
+* [Explore, Analyze and Predict CD Subscription for Bank Client](#explore-analyze-and-predict-cd-subscription-for-bank-client).
 
 ## Run a Jupyter notebook in the IBM Watson Studio
 
@@ -170,7 +170,7 @@ options to specify exactly what you want shared from your notebook:
 * `All content, including code`: displays the notebook as is.
 * A variety of `download as` options are also available in the menu.
 
-## Explore, Analyze and Predict CD Subscription for Bank
+## Explore, Analyze and Predict CD Subscription for Bank Client
  
 ### 1. Explore the dataset
 
