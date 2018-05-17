@@ -27,10 +27,10 @@ This Code Pattern will walk the user through the following conceptual steps:
 1. Log into IBM Watson Studio service.
 2. Upload the data as a data asset into Watson Studio.
 3. Start a notebook in Watson Studio and input the data asset previously created.
-4.
-5.
-6.
-7.
+4. Use XGBoost to create and train our ML model.
+5. Use Scikit Learn to create our ML pipeline to prep our data to be fed into XGBoost. 
+6. Use Matplotlib and it's higher level package seaborn for creating various visualizations.
+7. Pandas are used to read the data file into a dataframe for initial data exploration.
 8. Evaulate their predictive performance.
 
 ## Included components
@@ -198,6 +198,10 @@ Model Training is a iterative process and we will do several iterations to impro
 Using XGBoost as our tool of choice, we will highlight classification performance metrics such as ROC curve, Precision-Recall curve, and Confusion Matrix.
 
 We then offer multiple strategies to improve our classifier performance.
+
+### 6. Inference Discussion (Generalization and Prediction)
+
+In many ML training applications, there is the risk that the model won't generalize enough for unknown data. To mitigate this, it is recommended that data scientists do generalization error testing. This involves running cross validated models to predict on held-out data, to see it's performance on test data. But it's important that we don't look at held-out data or use it in training because this can make our model training biased and result in a large generalization error.
 
 ## Sample Output
 
