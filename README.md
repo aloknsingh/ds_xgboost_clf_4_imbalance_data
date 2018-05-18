@@ -27,10 +27,10 @@ This Code Pattern will walk the user through the following conceptual steps:
 1. Log into IBM Watson Studio service.
 2. Upload the data as a data asset into Watson Studio.
 3. Start a notebook in Watson Studio and input the data asset previously created.
-4. Use XGBoost to create and train our ML model.
-5. Use Scikit Learn to create our ML pipeline to prep our data to be fed into XGBoost. 
-6. Use Matplotlib and it's higher level package seaborn for creating various visualizations.
-7. Pandas are used to read the data file into a dataframe for initial data exploration.
+4. Pandas are used to read the data file into a dataframe for initial data exploration.
+5. Use Matplotlib and it's higher level package seaborn for creating various visualizations.
+6. Use Scikit Learn to create our ML pipeline to prep our data to be fed into XGBoost. 
+7. Use XGBoost to create and train our ML model.
 8. Evaulate their predictive performance.
 
 ## Included components
