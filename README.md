@@ -109,12 +109,14 @@ https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebo
 
 * Click the `Create` button.
 
+> Note: If queried for a Python version, select version `3.5`.
+
 ### 4. Upload data
 
 * Return to the project dashboard view and select the `Assets` tab.
 * This project has 1 dataset, which you can upload as a data asset in your project. Do this by loading the dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.  
 
-> ADD SCREEN SHOT - ARE WE LOADING THIS DATA INTO THE NOTEBOOK?
+![](doc/source/images/project-assets.png)
 
 * Once complete, go into your notebook in the edit mode (click on the pencil icon next to your notebook on the dashboard). 
 * Click on the `1001` data icon in the top right. The data files should show up. 
