@@ -1,7 +1,7 @@
 
-## Predicting Bank Client's Financial Product subscription using Scikit Learn and XGBoost for imbalance dataset
+## Predicting Bank Client's Cerificate of Deposit Purchase using Scikit Learn and XGBoost for imbalance dataset
 
-This Code Pattern will guide you through how to use `XGBoost`, `Scikit Learn` and `Python` in IBM Watson Studio to predict Bank Client's subscription to financial product based off a [UCI repository for Bank Marketing Data Set](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing).
+This Code Pattern will guide you through how to use `XGBoost`, `Scikit Learn` and `Python` in IBM Watson Studio. The goal is to use a Jupyter notebook and data from the [UCI repository for Bank Marketing Data](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing) to predict if a client will purchase a Certificate of Deposit (CD) from a banking institution.
 
 Class imbalance is a common problem in data science, where the number of positive samples are significantly less than the number of negative samples. As data scientists, one would like to solve this problem and create a classifier with good performance. XGBoost (Extreme Gradient Boosting Decision Tree) is very common tool for creating the Machine Learning Models for classification and regression. However, there are various tricks and techniques for creating good classification models using XGBoost for imbalanced data-sets that is non-trivial and the reason for developing this Code Pattern.
 
@@ -71,7 +71,7 @@ Log in or sign up for IBM's [Watson Studio](https://dataplatform.ibm.com).
 > Note: if you would prefer to skip the remaining Watson Studio set-up steps and just follow along by viewing the completed Notebook, simply:
 > * View the completed [notebook](https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebooks/predict_bank_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb) and its outputs, as is.
 > * While viewing the notebook, you can optionally download it to store for future use.
-> * When complete, continue this code pattern by jumping ahead to the [Analyze and Predict the data](#analyze-and-predict-the-data) section.
+> * When complete, continue this code pattern by jumping ahead to the [Explore, Analyze and Predict CD Subscription for Bank Client](#explore-analyze-and-predict-cd-subscription-for-bank-client) section.
 
 ### 2. Create a new Watson Studio project
 
@@ -112,11 +112,14 @@ https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebo
 ### 4. Upload data
 
 * Return to the project dashboard view and select the `Assets` tab.
-* This project has 3 datasets. Upload all three as data assets in your project. Do this by loading each dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.   
+* This project has 1 dataset, which you can upload as a data asset in your project. Do this by loading the dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.  
+
+> ADD SCREEN SHOT - ARE WE LOADING THIS DATA INTO THE NOTEBOOK?
+
 * Once complete, go into your notebook in the edit mode (click on the pencil icon next to your notebook on the dashboard). 
-* Click on the ``1001`` data icon in the top right. The data files should show up. 
-* Click on each and select ``Insert Pandas Data Frame``. Once you do that, a whole bunch of code will show up in your first cell. 
-* Make sure your ``bank.csv`` is saved as ``data_raw_all` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with ``bank.csv`` as ``df_data_2` and so on. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
+* Click on the `1001` data icon in the top right. The data files should show up. 
+* Click on each and select `Insert Pandas Data Frame`. Once you do that, a whole bunch of code will show up in your first cell. 
+* Make sure your `bank.csv` is saved as `data_raw_all` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with `bank.csv` as `df_data_2` and so on. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
 
 ### 5. Run the notebook
 
@@ -174,7 +177,7 @@ options to specify exactly what you want shared from your notebook:
  
 ### 1. Explore the dataset
 
-The imbalanced dataset is from Purtugese Bank Marketing data, where bank's associate makes call to user to sell financial product i.e CD to bank's client.
+The imbalanced dataset is from Purtugese banking institutions, and is based on phone calls to bank clients regarding the purchase of financial products offered by the bank (ie. Certificates of Deposit).
 
 ### 2. Prepare the data
 
@@ -209,6 +212,8 @@ After running, weighted and feature selected classifier, we find the final resul
 
 ![](doc/source/images/xgboost_out1.png)
 ![](doc/source/images/xgboost_out2.png)
+
+> ADD sentence about what the graphs mean.
 
 Awesome job following along! Now go try and take this further or apply it to a different use case!
 
