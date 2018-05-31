@@ -97,14 +97,14 @@ Log in or sign up for IBM's [Watson Studio](https://dataplatform.ibm.com).
 
 ![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/notebook_spark.png)
 
-* Now select the `From URL` tab to specify the URL to the notebook in this repository.
+* Now select the `From File` tab to specify the file location of the notebook in this repository.
 
-![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/notebook_with_url_spark.png)
+![](doc/source/images/load-from-file.png)
 
-* Enter this URL:
+* Enter the location of the file, which can be downloaded from the notebook directory in this repository: 
 
 ```
-https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebooks/predict_bank_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb
+/notebooks/predict_band_cd_subs_by_xgboost_clf_for_imbalance_dataset.ipynb
 ```
 
 * Click the `Create` button.
@@ -114,14 +114,19 @@ https://github.com/aloknsingh/ds_xgboost_clf_4_imbalance_data/tree/master/notebo
 ### 4. Upload data
 
 * Return to the project dashboard view and select the `Assets` tab.
-* This project has 1 dataset, which you can upload as a data asset in your project. Do this by loading the dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.  
+* This project has 1 dataset (`/data/bank.csv`), which you can upload as a data asset in your project. Do this by loading the dataset into the pop up section on the right hand side. Please see a screenshot of what it should look like below.  
 
 ![](doc/source/images/project-assets.png)
 
 * Once complete, go into your notebook in the edit mode (click on the pencil icon next to your notebook on the dashboard). 
-* Click on the `1001` data icon in the top right. The data files should show up. 
-* Click on each and select `Insert Pandas Data Frame`. Once you do that, a whole bunch of code will show up in your first cell. 
-* Make sure your `bank.csv` is saved as `data_raw_all` so that it is consistent with the original notebook. You may have to edit this because when your data is loaded into the notebook, it may be defined as a continuation of data frames, based on where I left off. This means your data may show up with `bank.csv` as `df_data_2` and so on. Either adjust the data frame names to be in sync with mine (remove where I loaded data and rename your data frames or input your loading information into the original code) or edit the following code below accordingly. Do this to make sure the code will run!
+* Execute the first initial cells until you get to the first cell in the `Data Exploration` section.
+* To load the data asset into the notebook, you first need to clear out the cell of all code except for the last two lines (i.e. keep the last two lines that reference `data_row_all`). Then place the cursor at the top of the cell above the 2 remaining lines of code.  
+* Click on the `1001` data icon in the top right. The `bank.csv` data file should show up.
+* Click on it and select `Insert Pandas Data Frame`. Once you do that, a whole bunch of code will show up in your cell.
+* Remove the last two lines of the inserted code. These lines start with `df_data_1` and will cause errors if left in.
+* When complete, this is what your cell should look like:
+
+![](doc/source/images/notebook-data-cell.png)
 
 ### 5. Run the notebook
 
@@ -163,7 +168,7 @@ Under the `File` menu, there are several ways to save your notebook:
 
 #### How to share your work:
 
-You can share your notebook by selecting the ``Share`` button located in the top
+You can share your notebook by selecting the `Share` button located in the top
 right section of your notebook panel. The end result of this action will be a URL
 link that will display a “read-only” version of your notebook. You have several
 options to specify exactly what you want shared from your notebook:
@@ -171,7 +176,7 @@ options to specify exactly what you want shared from your notebook:
 * `Only text and output`: will remove all code cells from the notebook view.
 * `All content excluding sensitive code cells`:  will remove any code cells
   that contain a *sensitive* tag. For example, `# @hidden_cell` is used to protect
-  your dashDB credentials from being shared.
+  your credentials from being shared.
 * `All content, including code`: displays the notebook as is.
 * A variety of `download as` options are also available in the menu.
 
@@ -210,12 +215,10 @@ In many ML training applications, there is the risk that the model won't general
 
 ## Sample Output
 
-After running, weighted and feature selected classifier, we find the final result based on the classification report and various stats. This is summarized in the following two screen-shots:
+The following screen-shots show that we set the weight on the positive sample to be 1000 and the feature selection threshold to be 0.008. In the third attempt running this tuned classifier, we find that our recall for an imbalanced positive sample has improved to 0.84 on the test data.
 
 ![](doc/source/images/xgboost_out1.png)
 ![](doc/source/images/xgboost_out2.png)
-
-> ADD sentence about what the graphs mean.
 
 Awesome job following along! Now go try and take this further or apply it to a different use case!
 
