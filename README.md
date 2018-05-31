@@ -120,10 +120,10 @@ Log in or sign up for IBM's [Watson Studio](https://dataplatform.ibm.com).
 
 * Once complete, go into your notebook in the edit mode (click on the pencil icon next to your notebook on the dashboard). 
 * Execute the first initial cells until you get to the first cell in the `Data Exploration` section.
-* To load the data asset into the notebook, you first need to clear out the cell of all code except for the last 2 lines. Then place the cursor at the top of the cell above the 2 remaining lines of code.  
+* To load the data asset into the notebook, you first need to clear out the cell of all code except for the last two lines (i.e. keep the last two lines that reference `data_row_all`). Then place the cursor at the top of the cell above the 2 remaining lines of code.  
 * Click on the `1001` data icon in the top right. The `bank.csv` data file should show up.
 * Click on it and select `Insert Pandas Data Frame`. Once you do that, a whole bunch of code will show up in your cell.
-* Remove the last 2 lines of the inserted code. These lines start with `df_data_1` and will cause errors if left in.
+* Remove the last two lines of the inserted code. These lines start with `df_data_1` and will cause errors if left in.
 * When complete, this is what your cell should look like:
 
 ![](doc/source/images/notebook-data-cell.png)
